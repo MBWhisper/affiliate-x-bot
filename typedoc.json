@@ -1,0 +1,18 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["./src"],
+  "entryPointStrategy": "expand",
+  "out": "docs",
+  "name": "Affiliate X Bot",
+  "includeVersion": true,
+  "excludePrivate": true,
+  "excludeProtected": false,
+  "plugin": [],
+  "theme": "default",
+  "readme": "README.md",
+  "githubPages": false,
+  "categorizeByGroup": true,
+  "navigationLinks": {
+    "GitHub": "https://github.com/your-org/affiliate-x-bot"
+  }
+}

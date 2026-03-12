@@ -22,7 +22,7 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci --omit=dev
 
-# Copy compiled output + product data
+# Copy ONLY the compiled output (dist folder)
 COPY --from=builder /app/dist ./dist
 
 # Persist the failed-tweet queue across restarts

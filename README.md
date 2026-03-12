@@ -20,17 +20,17 @@ cp .env.example .env
 # ✏️  افتح .env وعدّل القيم (API keys, associate tag, جدول cron …)
 
 # 4️⃣ تجربة وضع Dry-Run (معاينة)
-npm run dev:dry
+ry
 
-# 5️⃣ نشر تغريدة واحدة (تحقق من الاتصال أولاً)
-npm run verify:twitter   # يجب أن تُظهر اسم حسابك
-npm run dev              # تنشر إذا DRY_RUN=false
+# npm run dev:d5️⃣ نشر تغريدة واحدة (تحقق من الاتصال verify:twitter   # يجب أن تُ أولاً)
+npm runظهر اسم حسابك
+npm run dev              # تنشر=false
 
-# 6️⃣ تشغيل وفق جدول cron
+#  إذا DRY_RUN6️⃣ تشغيل وفق جدول cron
 npm run build
-npm run start:schedule   # سيستمع للجدولة المحددة في POST_SCHEDULE
+npm run start:schedule   # سيستمع لل في POST_SCHEDULEجدولة المحددة️⃣ (اخ
 
-# 7️⃣ (اختياري) تشغيل داخل Docker
+# 7تياري) تشغيل داخل Docker
 docker compose up -d     # سيحافظ على ملف queue/failed-tweets.json
 ```
 
@@ -49,6 +49,10 @@ docker compose up -d     # سيحافظ على ملف queue/failed-tweets.json
 | 📊 UTM Tracking | Auto-appended for non-Amazon links |
 | 📡 Remote Product Feed | Optional JSON API source via `PRODUCT_SOURCE_URL` |
 | 🐳 Docker Ready | Multi-stage Dockerfile + `docker-compose.yml` |
+| 🧪 Testing | Jest unit tests with coverage |
+| 🎨 Linting | ESLint + Prettier integration |
+| 📚 API Docs | TypeDoc generated documentation |
+| 🚀 CI/CD | GitHub Actions with semantic release |
 
 ---
 
@@ -151,6 +155,21 @@ docker compose down
 
 > Make sure `.env` is filled before running Docker — it is mounted via `env_file`.
 
+### GitHub Container Registry
+
+The CI/CD pipeline automatically builds and pushes Docker images to GHCR:
+
+```bash
+# Pull the latest image
+docker pull ghcr.io/your-org/affiliate-x-bot:latest
+
+# Run with environment variables
+docker run -d \
+  --name affiliate-bot \
+  --env-file .env \
+  ghcr.io/your-org/affiliate-x-bot:latest
+```
+
 ---
 
 ## 6) Niche selector
@@ -228,15 +247,79 @@ On the next run, queued tweets are retried **before** posting a new deal.
 
 ---
 
-## 10) Project structure
+## 10) Testing
+
+This project uses Jest for unit testing. Tests are located in `src/services/__tests__/`.
+
+```bash
+# Run all tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Run tests with coverage
+npm test -- --coverage
+```
+
+### Running specific tests
+
+```bash
+# Run only productCatalog tests
+npm test -- productCatalog
+
+# Run only tweetGenerator tests
+npm test -- tweetGenerator
+```
+
+---
+
+## 11) Linting & Code Formatting
+
+This project uses ESLint and Prettier for code quality.
+
+```bash
+# Run linter
+npm run lint
+
+# Auto-fix linting issues
+npm run lint:fix
+
+# Format code with Prettier
+npx prettier --write "src/**/*.ts"
+```
+
+---
+
+## 12) API Documentation
+
+Generate TypeDoc documentation:
+
+```bash
+# Generate docs
+npm run docs
+```
+
+This creates HTML documentation in the `docs/` directory. Open `docs/index.html` to view.
+
+---
+
+## 13) Project structure
 
 ```
 affiliate-x-bot/
-├── Dockerfile
-├── docker-compose.yml
-├── .env.example
+├── .github/workflows/          # GitHub Actions CI/CD
+│   └── build.yml              # Build, test, Docker, release
+├── .eslintrc.json              # ESLint configuration
+├── .prettierrc                 # Prettier configuration
+├── typedoc.json                # TypeDoc configuration
+├── jest.config.js              # Jest configuration
+├── Dockerfile                  # Multi-stage Docker build
+├── docker-compose.yml          # Docker Compose setup
+├── .env.example                # Environment variables template
 ├── package.json
 ├── tsconfig.json
+├── README.md
 └── src/
     ├── config/
     │   └── twitter.ts          ← API credentials + validation
@@ -246,6 +329,9 @@ affiliate-x-bot/
     │   ├── postDailyDeals.ts   ← Main entry point (one-shot + scheduler)
     │   └── verifyConnection.ts ← Connection test
     ├── services/
+    │   ├── __tests__/          # Unit tests
+    │   │   ├── productCatalog.test.ts
+    │   │   └── tweetGenerator.test.ts
     │   ├── failedTweetQueue.ts ← Persist & retry failed tweets
     │   ├── productCatalog.ts   ← Niche filtering + random selection
     │   ├── productDataSource.ts← Local JSON or remote API loader
@@ -257,7 +343,7 @@ affiliate-x-bot/
 
 ---
 
-## 11) Environment variable reference
+## 14) Environment variable reference
 
 | Variable | Required | Default | Description |
 |---|---|---|---|
@@ -281,3 +367,119 @@ affiliate-x-bot/
 | `UTM_CONTENT_PREFIX` | — | `deal` | UTM content prefix |
 | `PRODUCT_SOURCE_URL` | — | — | Remote JSON product API URL |
 | `PRODUCT_SOURCE_API_KEY` | — | — | Bearer token for remote API |
+
+---
+
+## 15) GitHub Secrets
+
+The following secrets should be configured in your GitHub repository:
+
+| Secret | Description |
+|---|---|
+| `TWITTER_API_KEY` | X API key |
+| `TWITTER_API_SECRET` | X API secret |
+| `TWITTER_ACCESS_TOKEN` | X access token |
+| `TWITTER_ACCESS_SECRET` | X access token secret |
+| `DISCORD_TOKEN` | Discord bot token (optional) |
+| `TELEGRAM_BOT_TOKEN` | Telegram bot token (optional) |
+| `NPM_TOKEN` | NPM access token for semantic-release (optional) |
+
+To add secrets:
+1. Go to your repository on GitHub
+2. Navigate to **Settings** → **Secrets and variables** → **Actions**
+3. Click **New repository secret**
+
+---
+
+## 16) Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. **Fork** the repository
+2. Create a **feature branch** (`git checkout -b feature/amazing-feature`)
+3. **Commit** your changes (`git commit -m 'feat: add amazing feature'`)
+4. **Push** to the branch (`git push origin feature/amazing-feature`)
+5. Open a **Pull Request**
+
+### Code style
+
+- Use **ESLint** and **Prettier** for code formatting
+- Write **unit tests** for new features
+- Follow **TypeScript** best practices
+- Keep commits **atomic** and **descriptive**
+
+### Commit message format
+
+This project uses [Conventional Commits](https://www.conventionalcommits.org/):
+
+```
+<type>(<scope>): <description>
+
+[optional body]
+
+[optional footer]
+```
+
+Types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+
+Example:
+```
+feat(productCatalog): add getNicheSummary function
+
+Add function to get product count per niche for analytics.
+
+Closes #123
+```
+
+---
+
+## 17) Semantic Release
+
+This project uses [semantic-release](https://semantic-release.gitbook.io/) for automated versioning and publishing.
+
+### Release workflow
+
+1. Push changes to `main` branch
+2. CI runs tests and build
+3. If tests pass, semantic-release analyzes commits
+4. Version is bumped based on commit messages:
+   - `fix:` → patch bump
+   - `feat:` → minor bump
+   - `BREAKING CHANGE:` → major bump
+5. Changelog is generated
+6. GitHub release is created
+7. NPM package is published (if configured)
+
+### Version tags
+
+Versions follow [Semantic Versioning](https://semver.org/):
+- `1.0.0` (major) - Breaking changes
+- `1.1.0` (minor) - New features
+- `1.1.1` (patch) - Bug fixes
+
+---
+
+## 18) CI/CD Pipeline
+
+The GitHub Actions workflow (`build.yml`) performs:
+
+1. **Install** - Install npm dependencies
+2. **Lint** - Run ESLint
+3. **Test** - Run Jest tests
+4. **Build** - Compile TypeScript
+5. **Docker** - Build and push image to GHCR (on main branch)
+6. **Release** - Run semantic-release (on main branch)
+
+### Skipping CI
+
+Add `skip ci` to your commit message to skip the workflow:
+
+```bash
+git commit -m "chore: update deps skip ci"
+```
+
+---
+
+## License
+
+ISC License - see the [LICENSE](LICENSE) file for details.
