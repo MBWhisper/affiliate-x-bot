@@ -1,0 +1,46 @@
+{
+  "name": "affiliate-x-bot",
+  "version": "1.0.0",
+  "description": "V1 TypeScript bot for auto-posting affiliate deals to X (Twitter)",
+  "main": "dist/jobs/postDailyDeals.js",
+  "scripts": {
+    "dev": "ts-node src/jobs/postDailyDeals.ts",
+    "dev:dry": "set DRY_RUN=true&& ts-node src/jobs/postDailyDeals.ts",
+    "dev:discord": "set DRY_RUN=false&& set POST_TO_X=false&& ts-node src/jobs/postDailyDeals.ts",
+    "dev:telegram": "set DRY_RUN=false&& set POST_TO_X=false&& ts-node src/jobs/postDailyDeals.ts",
+    "dev:all": "set DRY_RUN=false&& ts-node src/jobs/postDailyDeals.ts",
+    "jobs": "ts-node src/jobs/postWeb3Jobs.ts",
+    "jobs:dry": "set DRY_RUN=true&& ts-node src/jobs/postWeb3Jobs.ts",
+    "jobs:schedule": "node dist/jobs/postWeb3Jobs.js",
+    "sponsor:post": "ts-node src/jobs/postSponsoredJob.ts",
+    "sponsor:dry": "set DRY_RUN=true&& ts-node src/jobs/postSponsoredJob.ts",
+    "sponsor:list": "ts-node src/jobs/sponsorAdmin.ts list",
+    "sponsor:add": "ts-node src/jobs/sponsorAdmin.ts add",
+    "sponsor:off": "ts-node src/jobs/sponsorAdmin.ts off",
+    "sponsor:stats": "ts-node src/jobs/sponsorAdmin.ts stats",
+    "verify:twitter": "ts-node src/jobs/verifyConnection.ts",
+    "build": "tsc && xcopy /E /I /Y src\\data dist\\data >nul",
+    "start:schedule": "node dist/jobs/postDailyDeals.js",
+    "start": "node dist/jobs/postDailyDeals.js"
+  },
+  "keywords": [
+    "x",
+    "twitter",
+    "affiliate",
+    "bot",
+    "typescript"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "node-cron": "^4.2.1",
+    "twitter-api-v2": "^1.29.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.3.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  }
+}

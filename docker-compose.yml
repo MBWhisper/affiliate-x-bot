@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  affiliate-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: affiliate-x-bot
+    restart: unless-stopped
+
+    # Mount your local .env so secrets never bake into the image
+    env_file:
+      - .env
+
+    # Persist the failed-tweet queue on the host
+    volumes:
+      - ./queue:/app/queue
+
+    # Optional: keep a log file on the host
+    # volumes:
+    #   - ./logs:/app/logs

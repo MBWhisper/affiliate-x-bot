@@ -1,0 +1,21 @@
+[
+  {
+    "id": "sponsor-demo-001",
+    "active": true,
+    "company": "ChainLink Labs",
+    "jobTitle": "Senior Solidity Engineer — DeFi Protocol",
+    "location": "Remote Worldwide",
+    "salary": "$120k–$180k + tokens",
+    "applyUrl": "https://web3-jobs-hazel.vercel.app/",
+    "logoUrl": "https://cryptologos.cc/logos/chainlink-link-logo.png",
+    "tags": ["Solidity", "DeFi", "Ethereum", "Remote"],
+    "description": "Build next-gen DeFi contracts powering $12B in TVL. Work with top cryptography researchers.",
+    "package": "weekly",
+    "paidAmount": 19.99,
+    "currency": "USD",
+    "startDate": "2026-03-10",
+    "endDate": "2026-03-17",
+    "contactEmail": "sponsor@example.com",
+    "note": "DEMO — replace with real sponsor"
+  }
+]

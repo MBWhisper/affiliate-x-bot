@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calming Starfield</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            overflow: hidden;
+            background: linear-gradient(to bottom, #0a0a1a 0%, #0d1025 50%, #0f1429 100%);
+            min-height: 100vh;
+            cursor: none;
+        }
+
+        canvas {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .hint {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(147, 255, 0.4, 177);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            pointer-events: none;
+            transition: opacity 2s ease;
+        }
+
+        .hint.hidden {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="starfield"></canvas>
+    <div class="hint">move your cursor to guide the stars</div>
+
+    <script>
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+        const hint = document.querySelector('.hint');
+
+        let width, height;
+        let stars = [];
+        const numStars = 200;
+        
+        // Mouse position with easing
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
+
+        // Color palette - calming blues and whites
+        const colors = [
+            'rgba(200, 215, 255, ',   // Soft blue-white
+            'rgba(180, 195, 255, ',   // Light periwinkle
+            'rgba(165, 180, 240, ',   // Soft lavender blue
+            'rgba(255, 250, 245, ',   // Warm white
+            'rgba(220, 230, 255, ',   // Cool white
+            'rgba(140, 160, 220, ',   // Muted blue
+        ];
+
+        // Twinkle speeds
+        const twinkleSpeeds = [0.01, 0.015, 0.02, 0.025, 0.03];
+
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+            mouseX = width / 2;
+            mouseY = height / 2;
+            targetX = width / 2;
+            targetY = height / 2;
+        }
+
+        class Star {
+            constructor() {
+                this.init();
+            }
+
+            init() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.z = Math.random() * 2 + 0.5; // Depth factor
+                this.baseRadius = Math.random() * 1.5 + 0.5;
+                this.radius = this.baseRadius;
+                
+                // Select random color from palette
+                this.colorPrefix = colors[Math.floor(Math.random() * colors.length)];
+                this.opacity = Math.random() * 0.5 + 0.3;
+                this.baseOpacity = this.opacity;
+                
+                // Twinkle properties
+                this.twinkleSpeed = twinkleSpeeds[Math.floor(Math.random() * twinkleSpeeds.length)];
+                this.twinkleOffset = Math.random() * Math.PI * 2;
+                
+                // Individual movement characteristics
+                this.driftX = (Math.random() - 0.5) * 0.2;
+                this.driftY = (Math.random() - 0.5) * 0.2;
+                
+                // Velocity influenced by mouse
+                this.vx = 0;
+                this.vy = 0;
+            }
+
+            update(time) {
+                // Gentle drifting motion
+                this.x += this.driftX;
+                this.y += this.driftY;
+
+                // Calculate distance from center for parallax effect
+                const centerX = width / 2;
+                const centerY = height / 2;
+                
+                // Mouse influence - stars move slightly away from cursor
+                const dx = this.x - targetX;
+                const dy = this.y - targetY;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                const maxDist = Math.min(width, height) / 2;
+                
+                // Smooth easing toward target
+                mouseX += (targetX - mouseX) * 0.05;
+                mouseY += (targetY - mouseY) * 0.05;
+
+                // Stars drift away from mouse position subtly
+                if (dist < 400) {
+                    const force = (1 - dist / 400) * 0.3;
+                    const angle = Math.atan2(dy, dx);
+                    this.vx += Math.cos(angle) * force / this.z;
+                    this.vy += Math.sin(angle) * force / this.z;
+                }
+
+                // Apply velocity with damping
+                this.x += this.vx;
+                this.y += this.vy;
+                this.vx *= 0.95;
+                this.vy *= 0.95;
+
+                // Twinkle effect using sine wave
+                this.opacity = this.baseOpacity + Math.sin(time * this.twinkleSpeed + this.twinkleOffset) * 0.2;
+                this.opacity = Math.max(0.1, Math.min(1, this.opacity));
+
+                // Size pulsation
+                this.radius = this.baseRadius + Math.sin(time * this.twinkleSpeed * 0.5 + this.twinkleOffset) * 0.3;
+
+                // Wrap around edges
+                if (this.x < -10) this.x = width + 10;
+                if (this.x > width + 10) this.x = -10;
+                if (this.y < -10) this.y = height + 10;
+                if (this.y > height + 10) this.y = -10;
+            }
+
+            draw() {
+                // Glow effect for larger stars
+                if (this.z > 1.2 && this.opacity > 0.4) {
+                    const gradient = ctx.createRadialGradient(
+                        this.x, this.y, 0,
+                        this.x, this.y, this.radius * 3
+                    );
+                    gradient.addColorStop(0, this.colorPrefix + this.opacity * 0.5 + ')');
+                    gradient.addColorStop(1, this.colorPrefix + '0)');
+                    ctx.fillStyle = gradient;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius * 3, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                // Main star
+                ctx.fillStyle = this.colorPrefix + this.opacity + ')';
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function init() {
+            resize();
+            stars = [];
+            for (let i = 0; i < numStars; i++) {
+                stars.push(new Star());
+            }
+        }
+
+        function drawBackground() {
+            // Subtle gradient background
+            const gradient = ctx.createRadialGradient(
+                width / 2, height / 2, 0,
+                width / 2, height / 2, Math.max(width, height)
+            );
+            gradient.addColorStop(0, 'rgba(20, 25, 50, 1)');
+            gradient.addColorStop(1, 'rgba(10, 10, 26, 1)');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, width, height);
+        }
+
+        let time = 0;
+        function animate() {
+            time += 16; // Approximate ms per frame
+            
+            drawBackground();
+
+            // Sort stars by z for proper layering
+            stars.sort((a, b) => a.z - b.z);
+
+            for (const star of stars) {
+                star.update(time);
+                star.draw();
+            }
+
+            // Draw subtle nebula clouds
+            drawNebula();
+
+            requestAnimationFrame(animate);
+        }
+
+        function drawNebula() {
+            // Very subtle nebula effect in background
+            const centerX = width / 2;
+            const centerY = height / 2;
+            
+            // Nebula influenced by mouse
+            const nebulaX = mouseX;
+            const nebulaY = mouseY;
+
+            for (let i = 0; i < 3; i++) {
+                const x = nebulaX + Math.sin(time * 0.0001 + i * 2) * 100;
+                const y = nebulaY + Math.cos(time * 0.00015 + i * 2) * 100;
+                
+                const gradient = ctx.createRadialGradient(
+                    x, y, 0,
+                    x, y, 300
+                );
+                gradient.addColorStop(0, 'rgba(80, 60, 120, 0.03)');
+                gradient.addColorStop(0.5, 'rgba(60, 80, 140, 0.02)');
+                gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, width, height);
+            }
+        }
+
+        // Event listeners
+        window.addEventListener('resize', resize);
+
+        window.addEventListener('mousemove', (e) => {
+            targetX = e.clientX;
+            targetY = e.clientY;
+            
+            // Hide hint after first movement
+            if (!hint.classList.contains('hidden')) {
+                hint.classList.add('hidden');
+            }
+        });
+
+        // Touch support for mobile
+        window.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            targetX = touch.clientX;
+            targetY = touch.clientY;
+            
+            if (!hint.classList.contains('hidden')) {
+                hint.classList.add('hidden');
+            }
+        }, { passive: false });
+
+        // Initialize and start
+        init();
+        animate();
+    </script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+[
+  {
+    "id": "amz-tech-001",
+    "niche": "Tech",
+    "title": "Echo Dot (5th Gen) Smart Speaker",
+    "description": "Improved bass, Motion Detection & Temperature Sensor. Control smart home devices with Alexa.",
+    "price": 29.99,
+    "originalPrice": 49.99,
+    "currency": "USD",
+    "asin": "B09B8RF4PY",
+    "affiliateUrl": "https://www.amazon.com/dp/B09B8RF4PY/",
+    "imageUrl": "https://m.media-amazon.com/images/I/714Rq4k05UL._AC_SX679_.jpg",
+    "tags": ["Tech", "SmartHome", "Alexa"],
+    "source": {
+      "provider": "Amazon",
+      "feedType": "amazon",
+      "externalId": "B09B8RF4PY"
+    }
+  },
+  {
+    "id": "amz-tech-002",
+    "niche": "Tech",
+    "title": "Fire TV Stick 4K Max (2nd Gen)",
+    "description": "Supports WiFi 6E, Ambient Experience, and Alexa Voice Remote. Stream in 4K Ultra HD.",
+    "price": 39.99,
+    "originalPrice": 59.99,
+    "currency": "USD",
+    "asin": "B0BP9SNVH9",
+    "affiliateUrl": "https://www.amazon.com/dp/B0BP9SNVH9/",
+    "imageUrl": "https://m.media-amazon.com/images/I/61d5AMUD87L._AC_SX679_.jpg",
+    "tags": ["Tech", "Streaming", "FireTV"],
+    "source": {
+      "provider": "Amazon",
+      "feedType": "amazon",
+      "externalId": "B0BP9SNVH9"
+    }
+  },
+  {
+    "id": "amz-tech-003",
+    "niche": "Tech",
+    "title": "Kindle Paperwhite (16 GB)",
+    "description": "Now with a 6.8\" display and adjustable warm light. Waterproof, up to 12 weeks of battery.",
+    "price": 99.99,
+    "originalPrice": 139.99,
+    "currency": "USD",
+    "asin": "B08KTZ8249",
+    "affiliateUrl": "https://www.amazon.com/dp/B08KTZ8249/",
+    "imageUrl": "https://m.media-amazon.com/images/I/61PkCBDmCuL._AC_SX679_.jpg",
+    "tags": ["Tech", "Kindle", "Reading"],
+    "source": {
+      "provider": "Amazon",
+      "feedType": "amazon",
+      "externalId": "B08KTZ8249"
+    }
+  },
+  {
+    "id": "amz-tech-004",
+    "niche": "Tech",
+    "title": "Anker 65W USB-C Charger (3-Port)",
+    "description": "GaN technology. Charges MacBook, iPhone, iPad, and more simultaneously at full speed.",
+    "price": 29.99,
+    "originalPrice": 45.99,
+    "currency": "USD",
+    "asin": "B09C7SLHFP",
+    "affiliateUrl": "https://www.amazon.com/dp/B09C7SLHFP/",
+    "imageUrl": "https://m.media-amazon.com/images/I/61YnBDMDaGL._AC_SX679_.jpg",
+    "tags": ["Tech", "Charger", "GaN"],
+    "source": {
+      "provider": "Amazon",
+      "feedType": "amazon",
+      "externalId": "B09C7SLHFP"
+    }
+  },
+  {
+    "id": "amz-tech-005",
+    "niche": "Tech",
+    "title": "TP-Link WiFi 6 Router (AX1800)",
+    "description": "Next-gen WiFi 6 for faster speeds, lower latency, and more capacity. Covers 1,500 sq ft.",
+    "price": 59.99,
+    "originalPrice": 89.99,
+    "currency": "USD",
+    "asin": "B08H8YLKN7",
+    "affiliateUrl": "https://www.amazon.com/dp/B08H8YLKN7/",
+    "imageUrl": "https://m.media-amazon.com/images/I/71l4X9BXKUL._AC_SX679_.jpg",
+    "tags": ["Tech", "WiFi6", "Networking"],
+    "source": {
+      "provider": "Amazon",
+      "feedType": "amazon",
+      "externalId": "B08H8YLKN7"
+    }
+  },
+  {
+    "id": "amz-fit-001",
+    "niche": "Fitness",
+    "title": "Fitbit Charge 6 Fitness Tracker",
+    "description": "Built-in GPS, heart rate monitoring, sleep tracking. Works with Google Maps & Wallet.",
+    "price": 99.95,
+    "originalPrice": 159.95,
+    "currency": "USD",
+    "asin": "B0CCM5LTBM",
+    "affiliateUrl": "https://www.amazon.com/dp/B0CCM5LTBM/",
+    "imageUrl": "https://m.media-amazon.com/images/I/61EE+TsVQDL._AC_SX679_.jpg",
+    "tags": ["Fitness", "Fitbit", "Wearable"],
+    "source": {
+      "provider": "Amazon",
+      "feedType": "amazon",
+      "externalId": "B0CCM5LTBM"
+    }
+  },
+  {
+    "id": "amz-fit-002",
+    "niche": "Fitness",
+    "title": "Bowflex SelectTech 552 Adjustable Dumbbells",
+    "description": "Replaces 15 sets of weights. Adjusts from 5–52.5 lbs in 2.5-lb increments.",
+    "price": 279.0,
+    "originalPrice": 429.0,
+    "currency": "USD",
+    "asin": "B001ARYU58",
+    "affiliateUrl": "https://www.amazon.com/dp/B001ARYU58/",
+    "imageUrl": "https://m.media-amazon.com/images/I/61GpLBjhOvL._AC_SX679_.jpg",
+    "tags": ["Fitness", "HomeGym", "Dumbbells"],
+    "source": {
+      "provider": "Amazon",
+      "feedType": "amazon",
+      "externalId": "B001ARYU58"
+    }
+  },
+  {
+    "id": "amz-fit-003",
+    "niche": "Fitness",
+    "title": "Whoop 4.0 Health & Fitness Tracker",
+    "description": "24/7 health monitoring. Tracks strain, recovery, sleep quality, and HRV. No screen, no distractions.",
+    "price": 30.0,
+    "originalPrice": 0,
+    "currency": "USD",
+    "asin": "B09HCB2FDV",
+    "affiliateUrl": "https://www.amazon.com/dp/B09HCB2FDV/",
+    "imageUrl": "https://m.media-amazon.com/images/I/61JgBGXlqfL._AC_SX679_.jpg",
+    "tags": ["Fitness", "Recovery", "HRV"],
+    "source": {
+      "provider": "Amazon",
+      "feedType": "amazon",
+      "externalId": "B09HCB2FDV"
+    }
+  },
+  {
+    "id": "amz-fit-004",
+    "niche": "Fitness",
+    "title": "TRX GO Suspension Trainer System",
+    "description": "Full body workout anywhere. Adjustable, lightweight, and durable. Used by pro athletes.",
+    "price": 89.95,
+    "originalPrice": 149.95,
+    "currency": "USD",
+    "asin": "B07QY5FY7W",
+    "affiliateUrl": "https://www.amazon.com/dp/B07QY5FY7W/",
+    "imageUrl": "https://m.media-amazon.com/images/I/61CjRV5vLhL._AC_SX679_.jpg",
+    "tags": ["Fitness", "Suspension", "HomeWorkout"],
+    "source": {
+      "provider": "Amazon",
+      "feedType": "amazon",
+      "externalId": "B07QY5FY7W"
+    }
+  },
+  {
+    "id": "amz-crypto-001",
+    "niche": "Crypto",
+    "title": "Ledger Nano X Hardware Wallet",
+    "description": "Secure your BTC, ETH, SOL & 5,500+ coins. Bluetooth enabled. CC EAL5+ certified chip.",
+    "price": 149.0,
+    "originalPrice": 179.0,
+    "currency": "USD",
+    "asin": "B07M6R4NK3",
+    "affiliateUrl": "https://www.amazon.com/dp/B07M6R4NK3/",
+    "imageUrl": "https://m.media-amazon.com/images/I/51bB7rFpD6L._AC_SX679_.jpg",
+    "tags": ["Crypto", "Security", "Ledger"],
+    "source": {
+      "provider": "Amazon",
+      "feedType": "amazon",
+      "externalId": "B07M6R4NK3"
+    }
+  },
+  {
+    "id": "amz-crypto-002",
+    "niche": "Crypto",
+    "title": "Trezor Model T Hardware Wallet",
+    "description": "Open-source cold storage with touchscreen. Supports 1,800+ coins. PIN & passphrase protected.",
+    "price": 179.0,
+    "originalPrice": 219.0,
+    "currency": "USD",
+    "asin": "B07HJDNKM5",
+    "affiliateUrl": "https://www.amazon.com/dp/B07HJDNKM5/",
+    "imageUrl": "https://m.media-amazon.com/images/I/41U6tdyijEL._AC_SX679_.jpg",
+    "tags": ["Crypto", "Trezor", "ColdStorage"],
+    "source": {
+      "provider": "Amazon",
+      "feedType": "amazon",
+      "externalId": "B07HJDNKM5"
+    }
+  },
+  {
+    "id": "amz-crypto-003",
+    "niche": "Crypto",
+    "title": "Bitmain Antminer S19 XP (140TH/s)",
+    "description": "High-efficiency Bitcoin ASIC miner. Power: 3010W. Ideal for serious BTC mining operations.",
+    "price": 1299.0,
+    "originalPrice": 2499.0,
+    "currency": "USD",
+    "asin": "B09TQRP14V",
+    "affiliateUrl": "https://www.amazon.com/dp/B09TQRP14V/",
+    "imageUrl": "https://m.media-amazon.com/images/I/41BL6KDRRdL._AC_SX679_.jpg",
+    "tags": ["Crypto", "Mining", "Bitcoin"],
+    "source": {
+      "provider": "Amazon",
+      "feedType": "amazon",
+      "externalId": "B09TQRP14V"
+    }
+  },
+  {
+    "id": "web3-jobs-site",
+    "niche": "Web3",
+    "title": "Web3 Jobs — Find Blockchain & Crypto Jobs",
+    "description": "Browse hundreds of remote Web3, Solidity, DeFi & blockchain developer jobs. Free to use.",
+    "price": 0,
+    "currency": "USD",
+    "affiliateUrl": "https://web3-jobs-hazel.vercel.app/",
+    "imageUrl": "",
+    "tags": ["Web3", "BlockchainJobs", "DeFi"],
+    "source": {
+      "provider": "Web3Jobs",
+      "feedType": "manual",
+      "externalId": "web3-jobs-site"
+    }
+  },
+  {
+    "id": "web3-001",
+    "niche": "Web3",
+    "title": "Mastering Ethereum – O'Reilly Book",
+    "description": "By Gavin Wood & Andreas Antonopoulos. The definitive guide to building smart contracts and DApps.",
+    "price": 35.99,
+    "originalPrice": 69.99,
+    "currency": "USD",
+    "asin": "1491971940",
+    "affiliateUrl": "https://www.amazon.com/dp/1491971940/",
+    "imageUrl": "https://m.media-amazon.com/images/I/81rFUVaGBcL._AC_SY780_.jpg",
+    "tags": ["Web3", "Ethereum", "SmartContracts"],
+    "source": {
+      "provider": "Amazon",
+      "feedType": "amazon",
+      "externalId": "1491971940"
+    }
+  },
+  {
+    "id": "web3-002",
+    "niche": "Web3",
+    "title": "The Bitcoin Standard – Hardcover",
+    "description": "Saifedean Ammous. The decentralized alternative to central banking. A must-read for every crypto believer.",
+    "price": 19.99,
+    "originalPrice": 29.99,
+    "currency": "USD",
+    "asin": "1119473861",
+    "affiliateUrl": "https://www.amazon.com/dp/1119473861/",
+    "imageUrl": "https://m.media-amazon.com/images/I/71oA71DXXeL._AC_SY780_.jpg",
+    "tags": ["Web3", "Bitcoin", "Finance"],
+    "source": {
+      "provider": "Amazon",
+      "feedType": "amazon",
+      "externalId": "1119473861"
+    }
+  },
+  {
+    "id": "web3-003",
+    "niche": "Web3",
+    "title": "Solidity & Ethereum in 12 Hours Course (eBook)",
+    "description": "Practical guide to writing Solidity smart contracts, deploying to Ethereum and testnets.",
+    "price": 14.99,
+    "originalPrice": 39.99,
+    "currency": "USD",
+    "affiliateUrl": "https://www.amazon.com/s?k=solidity+ethereum+book",
+    "imageUrl": "",
+    "tags": ["Web3", "Solidity", "DApps"],
+    "source": {
+      "provider": "ManualSeed",
+      "feedType": "manual",
+      "externalId": "web3-solidity-book"
+    }
+  },
+  {
+    "id": "amz-home-001",
+    "niche": "Home",
+    "title": "Govee Smart LED Strip Lights (65.6ft)",
+    "description": "16 million colors, music sync, app & Alexa control. Ideal for room ambiance and gaming setups.",
+    "price": 29.99,
+    "originalPrice": 59.99,
+    "currency": "USD",
+    "asin": "B08KGX5JX1",
+    "affiliateUrl": "https://www.amazon.com/dp/B08KGX5JX1/",
+    "imageUrl": "https://m.media-amazon.com/images/I/71vfRF1R4cL._AC_SX679_.jpg",
+    "tags": ["Home", "SmartHome", "Lighting"],
+    "source": {
+      "provider": "Amazon",
+      "feedType": "amazon",
+      "externalId": "B08KGX5JX1"
+    }
+  },
+  {
+    "id": "amz-home-002",
+    "niche": "Home",
+    "title": "Instant Pot Duo 7-in-1 Electric Pressure Cooker",
+    "description": "Pressure cooker, slow cooker, rice cooker, steamer, sauté, yogurt maker & warmer. 6 Qt.",
+    "price": 59.99,
+    "originalPrice": 99.99,
+    "currency": "USD",
+    "asin": "B00FLYWNYQ",
+    "affiliateUrl": "https://www.amazon.com/dp/B00FLYWNYQ/",
+    "imageUrl": "https://m.media-amazon.com/images/I/71MesScholar5L._AC_SX679_.jpg",
+    "tags": ["Home", "Kitchen", "InstantPot"],
+    "source": {
+      "provider": "Amazon",
+      "feedType": "amazon",
+      "externalId": "B00FLYWNYQ"
+    }
+  }
+]
