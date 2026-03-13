@@ -16,8 +16,7 @@ import {
   readAllSponsors,
   addSponsor,
   deactivateSponsor,
-  getSponsorStats,
-  Sponsor
+  getSponsorStats
 } from "../services/sponsorManager";
 
 // ─── CLI colour helpers ───────────────────────────────────────────────────────

@@ -8,6 +8,9 @@ export function getProductsByNiche(products: Product[], niche?: ProductNiche): P
 }
 
 export function pickRandomProduct(products: Product[]): Product {
+  if (!products || products.length === 0) {
+    throw new Error("Cannot pick a random product from an empty array");
+  }
   const index = Math.floor(Math.random() * products.length);
   return products[index];
 }

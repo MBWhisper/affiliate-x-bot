@@ -1,4 +1,4 @@
-import { Product, ProductNiche } from '../types/product';
+import { Product, ProductNiche } from '../../types/product';
 import {
   getProductsByNiche,
   pickRandomProduct,
